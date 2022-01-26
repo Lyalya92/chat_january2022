@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.chat_january.chat_client.MainChatController">
+
+    <VBox fx:id="mainChatPanel">
+        <HBox>
+            <Button fx:id="btnConnect" onAction="#click" text="Connect" />
+
+            <MenuBar>
+                <Menu text="Profile">
+                    <MenuItem onAction="#login" text="Login" />
+                    <MenuItem onAction="#settings" text="Settings" />
+                    <MenuItem onAction="#exit" text="Exit" />
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem onAction="#showHelp" text="Help" />
+                </Menu>
+                <Menu text="About">
+                    <MenuItem onAction="#showAbout" text="About" />
+                </Menu>
+            </MenuBar>
+        </HBox>
+
+        <HBox VBox.vgrow="ALWAYS">
+            <TextArea fx:id="mainChatArea" editable="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </TextArea>
+            <ListView fx:id="contactList" minWidth="90.0">
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </ListView>
+        </HBox>
+
+        <HBox VBox.vgrow="ALWAYS">
+            <TextField fx:id="inputField" onAction="#sendMessage" prefHeight="70.0" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="btnSend" minWidth="125.0" onAction="#sendMessage" prefHeight="70.0" text="SEND">
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </Button>
+        </HBox>
+
+    </VBox>
+</AnchorPane>
