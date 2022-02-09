@@ -1,19 +1,22 @@
-package ru.geekbrains.chat_january.chat_client;
+package ru.geekbrains.chat_january.chat_client.controllers;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import ru.geekbrains.chat_january.chat_client.network.MessageProcessor;
 import ru.geekbrains.chat_january.chat_client.network.NetworkService;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -53,7 +56,7 @@ public class MainChatController implements Initializable, MessageProcessor {
     public VBox mainChatPanel;
 
     public void connectToServer (ActionEvent actionEvent) {
-
+        login(actionEvent);
     }
 
     public void disconnectToServer (ActionEvent actionEvent) {
@@ -113,6 +116,17 @@ public class MainChatController implements Initializable, MessageProcessor {
     }
 
     public void login(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/loginWindow.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 
     @Override
@@ -131,8 +145,10 @@ public class MainChatController implements Initializable, MessageProcessor {
         switch (splitMessage[0]) {
             case "/auth_ok" :
                 this.nickname = splitMessage[1];
-                loginPanel.setVisible(false);
-                mainChatPanel.setVisible(true);
+//                loginPanel.setVisible(false);
+//                mainChatPanel.setVisible(true);
+                  btnSend.setDisable(true);
+                  inputField.isEditable();
                 break;
             case "/error" :
                 showError(splitMessage[1]);
@@ -160,22 +176,22 @@ public class MainChatController implements Initializable, MessageProcessor {
         alert.showAndWait();
     }
 
-    public void sendAuth(ActionEvent actionEvent) {
-        var login = loginField.getText();
-        var password = passwordField.getText();
-        if (login.isBlank() || password.isBlank()) {
-            return;
-        }
-
-        var message = "/auth" + REGEX + login + REGEX + password;
-
-        if (!networkService.isConnected()) {
-            try {
-                networkService.connect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        networkService.sendMessage(message);
-    }
+//    public void sendAuth(ActionEvent actionEvent) {
+//        var login = loginField.getText();
+//        var password = passwordField.getText();
+//        if (login.isBlank() || password.isBlank()) {
+//            return;
+//        }
+//
+//        var message = "/auth" + REGEX + login + REGEX + password;
+//
+//        if (!networkService.isConnected()) {
+//            try {
+//                networkService.connect();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        networkService.sendMessage(message);
+//    }
 }

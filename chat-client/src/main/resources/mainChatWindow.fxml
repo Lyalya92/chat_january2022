@@ -3,24 +3,29 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.chat_january.chat_client.MainChatController">
+<AnchorPane prefHeight="451.0" prefWidth="744.0" style="-fx-background-color: #f4f8a0;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.chat_january.chat_client.controllers.MainChatController">
 
-    <VBox fx:id="loginPanel">
-        <Label text="Login: "/>
-        <TextField fx:id="loginField"/>
-        <Label text="Password: "/>
-        <PasswordField fx:id="passwordField"/>
-        <Button text="connect" onAction="#sendAuth"/>
+<!--    <VBox fx:id="loginPanel">-->
+<!--        <Label text="Login: "/>-->
+<!--        <TextField fx:id="loginField"/>-->
+<!--        <Label text="Password: "/>-->
+<!--        <PasswordField fx:id="passwordField"/>-->
+<!--        <Button text="connect" onAction="#sendAuth"/>-->
 
-    </VBox>
+<!--    </VBox>-->
 
-    <VBox fx:id="mainChatPanel" visible="false">
-        <HBox>
-            <Button fx:id="btnConnect" onAction="#click" text="Connect" />
+    <VBox fx:id="mainChatPanel" visible="true">
+        <HBox prefHeight="24.0" prefWidth="746.0">
+            <Button fx:id="btnConnect" onAction="#click" prefHeight="26.0" prefWidth="121.0" text="Connect" textAlignment="CENTER" textFill="#11ab21">
+            <font>
+               <Font name="Bookman Old Style" size="14.0" />
+            </font></Button>
 
-            <MenuBar>
-                <Menu text="Profile">
+            <MenuBar prefHeight="26.0" prefWidth="171.0">
+
+                <Menu text="Account">
                     <MenuItem onAction="#login" text="Login" />
                     <MenuItem onAction="#settings" text="Settings" />
                     <MenuItem onAction="#exit" text="Exit" />
@@ -35,7 +40,7 @@
         </HBox>
 
         <HBox VBox.vgrow="ALWAYS">
-            <TextArea fx:id="mainChatArea" editable="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+            <TextArea fx:id="mainChatArea" editable="false" prefHeight="391.0" prefWidth="476.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                 <HBox.margin>
                     <Insets left="5.0" right="5.0" />
                 </HBox.margin>
@@ -48,15 +53,21 @@
         </HBox>
 
         <HBox VBox.vgrow="ALWAYS">
-            <TextField fx:id="inputField" onAction="#sendMessage" prefHeight="70.0" HBox.hgrow="ALWAYS">
+            <TextField fx:id="inputField" editable="false" onAction="#sendMessage" prefHeight="10.0" prefWidth="601.0" HBox.hgrow="ALWAYS">
                 <HBox.margin>
                     <Insets left="5.0" right="5.0" />
                 </HBox.margin>
+            <font>
+               <Font name="Bookman Old Style" size="12.0" />
+            </font>
             </TextField>
-            <Button fx:id="btnSend" minWidth="125.0" onAction="#sendMessage" prefHeight="70.0" text="SEND">
+            <Button fx:id="btnSend" disable="true" minWidth="125.0" onAction="#sendMessage" prefHeight="28.0" prefWidth="125.0" text="SEND" textFill="#11ab21" underline="true">
                 <HBox.margin>
                     <Insets left="5.0" right="5.0" />
                 </HBox.margin>
+            <font>
+               <Font name="Bookman Old Style" size="12.0" />
+            </font>
             </Button>
         </HBox>
 
