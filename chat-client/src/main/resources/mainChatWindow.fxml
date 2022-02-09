@@ -6,7 +6,16 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.chat_january.chat_client.MainChatController">
 
-    <VBox fx:id="mainChatPanel">
+    <VBox fx:id="loginPanel">
+        <Label text="Login: "/>
+        <TextField fx:id="loginField"/>
+        <Label text="Password: "/>
+        <PasswordField fx:id="passwordField"/>
+        <Button text="connect" onAction="#sendAuth"/>
+
+    </VBox>
+
+    <VBox fx:id="mainChatPanel" visible="false">
         <HBox>
             <Button fx:id="btnConnect" onAction="#click" text="Connect" />
 
