@@ -81,7 +81,7 @@ public class ClientHandler {
 
                         if (server.isNicknameBusy(nickname)) {
                             response = "/error" + Server.REGEX + "this client already connected";
-                            System.out.println("Nickname busy" + nickname);
+                            System.out.println("Nickname busy " + nickname);
                         }
 
                         if (!response.equals("")) {
